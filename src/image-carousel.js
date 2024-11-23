@@ -1,3 +1,6 @@
+import nextIcon from "../assets/icons/next.png";
+import prevIcon from "../assets/icons/prev.png";
+
 export class ImageCarousel {
     constructor(images) {
         this.images = images;
@@ -12,10 +15,16 @@ export class ImageCarousel {
         const nextButton = document.createElement("button");
         nextButton.classList.add("next-btn");
         nextButton.addEventListener("click", this.next.bind(this));
+        const nextImg = document.createElement("img");
+        nextImg.src = nextIcon;
+        nextButton.appendChild(nextImg);
 
         const prevButton = document.createElement("button");
         prevButton.classList.add("prev-btn");
         prevButton.addEventListener("click", this.prev.bind(this));
+        const prevImg = document.createElement("img");
+        prevImg.src = prevIcon;
+        prevButton.appendChild(prevImg);
 
         this.frame.appendChild(nextButton);
         this.frame.appendChild(prevButton);
