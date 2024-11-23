@@ -9,9 +9,41 @@
     margin-top: 10%;
     width: 90%;
     height: 70%;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 5fr 1fr;
+}
+
+.prev-btn {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.next-btn {
+    grid-column: -2 / -1;
+    grid-row: 1 / 2;
+}
+
+.nav-bar {
+    grid-row: -2 / -1;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .slide-container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -42,6 +74,7 @@ img {
     opacity: 0.3;
     justify-self: start;
 }
+
 
 .hidden {
     display: none;

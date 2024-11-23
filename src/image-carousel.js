@@ -2,12 +2,40 @@ export class ImageCarousel {
     constructor(images) {
         this.images = images;
         this.focusIndex = 0;
+
         this.frame = document.createElement("div");
         this.frame.classList.add("frame");
         const slideContainer = document.createElement("div");
         slideContainer.classList.add("slide-container");
         this.frame.appendChild(slideContainer);
+
+        const nextButton = document.createElement("button");
+        nextButton.classList.add("next-btn");
+        nextButton.addEventListener("click", this.next.bind(this));
+
+        const prevButton = document.createElement("button");
+        prevButton.classList.add("prev-btn");
+        prevButton.addEventListener("click", this.prev.bind(this));
+
+        this.frame.appendChild(nextButton);
+        this.frame.appendChild(prevButton);
+
+        const navBar = document.createElement("div");
+        navBar.classList.add("nav-bar");
+
+        this.images.forEach((image, index) => {
+            const btn = document.createElement("button");
+            btn.classList.add("nav-btn");
+            btn.addEventListener("click", () => {
+                this.setFocus.bind(this)(index);
+            })
+            navBar.appendChild(btn);
+        })
+
+        this.frame.appendChild(navBar);
     }
+
+    
 
     buildSlideContainer() {
         
