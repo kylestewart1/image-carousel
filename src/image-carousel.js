@@ -35,6 +35,10 @@ export class ImageCarousel {
         this.images.forEach((image, index) => {
             const btn = document.createElement("button");
             btn.classList.add("nav-btn");
+            btn.dataset.index = index;
+            if (index === 0) {
+                btn.classList.add("selected");
+            }
             btn.addEventListener("click", () => {
                 this.setFocus.bind(this)(index);
             })
@@ -44,7 +48,6 @@ export class ImageCarousel {
         this.frame.appendChild(navBar);
     }
 
-    
 
     buildSlideContainer() {
         
@@ -65,7 +68,6 @@ export class ImageCarousel {
     getImageStatus(index) {
         const nextIndex = this.focusIndex === this.images.length - 1 ? 0 : this.focusIndex + 1;
         const prevIndex = this.focusIndex === 0 ? this.images.length - 1 : this.focusIndex - 1;
-        console.log(nextIndex, prevIndex);
         if (index === this.focusIndex) {
             return "focus";
         } else if (index === nextIndex) {
@@ -83,6 +85,14 @@ export class ImageCarousel {
         }
         this.focusIndex = index;
         this.buildSlideContainer();
+        this.frame.querySelectorAll(".nav-btn").forEach(btn => {
+            console.log(btn);
+            btn.classList.remove("selected");
+            if (Number(btn.dataset.index) === this.focusIndex) {
+                console.log("hi");
+                btn.classList.add("selected");
+            }
+        })
     }
 
     next() {

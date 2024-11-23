@@ -15,6 +15,7 @@
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-rows: 5fr 1fr;
+    background-color: rgba(200, 200, 200, 0.3);
 }
 
 button {
@@ -49,10 +50,13 @@ button:hover {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid gray;
+    border: 1px solid rgba(200, 200, 200, 0.5);
+    background-color: white;
 }
 
-
+.selected {
+    background-color: rgb(0, 162, 255);
+}
 
 .slide-container {
     grid-column: 2 / 3;
